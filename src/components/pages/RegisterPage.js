@@ -29,7 +29,7 @@ const RegisterPage = () => {
         email
       });
 
-      navigate('/login'); // Redirect to login page after successful registration
+      navigate('/'); // Redirect to login page after successful registration
     } catch (error) {
       setError(error.message);
     }

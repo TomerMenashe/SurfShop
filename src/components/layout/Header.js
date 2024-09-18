@@ -1,14 +1,25 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../../styles/Header.css'; // Ensure your Header-specific CSS
-import { useAuth } from '../../context/authController'; // Correctly importing useAuth
+import { Link, useNavigate } from 'react-router-dom'; // Ensure useNavigate is imported
+import { auth } from '../../firebase'; // Ensure Firebase auth is imported
+import { useAuth } from '../../context/authController'; // Assuming you have a custom hook to get the auth context
+import '../../styles/Header.css';
 
 const Header = () => {
+  const { user, logout } = useAuth(); // Access the current user and the logout function from the context
   const [searchOpen, setSearchOpen] = useState(false);
-  const { user, logout } = useAuth(); // Access authentication state and logout function
+  const navigate = useNavigate();
 
   const toggleSearch = () => {
     setSearchOpen(!searchOpen);
+  };
+
+  const handleSignOut = async () => {
+    try {
+      await logout(); // Call the logout function from the context or directly from Firebase
+      navigate('/'); // Redirect to the home page or login page after logging out
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
   };
 
   return (
@@ -37,10 +48,12 @@ const Header = () => {
 
         {/* Authentication Links */}
         <div className="auth-links">
-          {user ? (
+          {user ? ( 
             <>
-              <button className="cart-btn" onClick={logout}>Sign Out</button>
-              <span className="welcome-text">Welcome, {user.displayName || user.email}</span>
+              <button className="cart-btn" onClick={handleSignOut}>Sign Out</button>
+              <span className="welcome-text">
+                Welcome, {user.username || "User"} {/* Display the username */}
+              </span>
             </>
           ) : (
             <>
