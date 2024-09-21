@@ -1,0 +1,98 @@
+.surfboard-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh; /* Full screen height */
+    padding: 40px;
+    background-color: #f9f9f9;
+  }
+  
+  .surfboard-detail-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 50px; /* Space between image and description */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1200px; /* Full width with image */
+    width: 100%;
+  }
+  
+  .surfboard-detail-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+  }
+  
+  .surfboard-detail-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .surfboard-detail-info h2 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .surfboard-detail-info p {
+    font-family: 'Arial', sans-serif;
+    color: #555;
+    font-size: 1.2rem;
+    line-height: 1.6; /* For better text readability */
+    margin-bottom: 20px;
+  }
+  
+  .surfboard-detail-info .price {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 30px;
+  }
+  
+  .surfboard-detail-info .discounted-price {
+    font-size: 1.3rem;
+    color: #d9534f; /* Red color for the discounted price */
+    text-decoration: line-through;
+    margin-left: 10px;
+  }
+  
+  .surfboard-detail-info .subheading {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .surfboard-detail-info .description {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555;
+  }
+  
+  .button-group {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .button-group button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .button-group button:hover {
+    background-color: #0056b3;
+  }
+  

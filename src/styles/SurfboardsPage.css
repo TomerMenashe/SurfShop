@@ -1,0 +1,62 @@
+/* Set up a grid layout for surfboards */
+.surfboard-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Display 3 surfboards per row */
+    gap: 50px; /* Space between the surfboards */
+    padding: 0 40px; /* Page padding */
+    background-color: #fff; /* Plain white background */
+    justify-items: center; /* Center align the surfboards in the grid */
+  }
+  
+  /* Remove card-like appearance from surfboard item */
+  .surfboard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: none; /* Remove background */
+    border: none; /* Remove borders */
+    box-shadow: none; /* Remove shadow */
+    margin: 0;
+    padding: 0;
+    cursor: pointer; /* Add a pointer for interactivity */
+  }
+  
+  /* Surfboard image with no borders or box effects */
+  .surfboard-card img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensure image scales properly */
+    margin-bottom: 10px; /* Space between image and text */
+    border: none; /* No borders */
+  }
+  
+  /* Surfboard Name */
+  .surfboard-card h2 {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 1.5rem;
+    color: #004F6E; /* Professional blue shade */
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* Surfboard Length and Price */
+  .surfboard-card p {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    font-size: 1.1rem;
+    margin: 5px 0;
+    text-align: center;
+  }
+  
+  .surfboard-card .price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  /* Hover Effect: Slight enlargement of the surfboard image */
+  .surfboard-card:hover img {
+    transform: scale(1.05); /* Slight image enlargement */
+    transition: transform 0.3s ease; /* Smooth transition */
+  }
+  

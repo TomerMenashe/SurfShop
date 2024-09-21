@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import SurfboardsPage from './components/pages/SurfboardsPage';
+import SurfboardDetail from './components/pages/SurfboardDetail';  // Import the new surfboard detail component
 import FinsPage from './components/pages/FinsPage';
 import AccessoriesPage from './components/pages/AccessoriesPage';
 import ApparelPage from './components/pages/ApparelPage';
@@ -22,6 +23,7 @@ function App() {
           {/* Public Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/surfboards" element={<SurfboardsPage />} />
+          <Route path="/surfboards/:id" element={<SurfboardDetail />} />  {/* Add the route for surfboard details */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
 
