@@ -5,14 +5,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.85); /* Same color for the search bar */
+  background-color: rgba(0, 0, 0, 0.85);
   color: #fff;
   position: fixed;
   top: 0;
+  left: 2%;
   z-index: 100;
   border-radius: 0 0 8px 8px;
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Slight shadow for better separation */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Left Side Home Icon */
@@ -29,7 +30,7 @@
 }
 
 .home-icon img:hover {
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1);
 }
 
 /* Navigation Links */
@@ -48,7 +49,7 @@
 }
 
 .nav-link:hover {
-  color: #ff7f50; /* Coral color on hover */
+  color: #ff7f50;
 }
 
 /* Navigation Actions (Search and Cart) */
@@ -66,12 +67,12 @@
 }
 
 .search-icon img:hover {
-  transform: scale(1.1); /* Slight zoom effect on hover */
+  transform: scale(1.1);
 }
 
 /* Cart Button */
 .cart-btn {
-  background-color: rgba(255, 127, 80, 0.8); /* Semi-transparent coral */
+  background-color: rgba(255, 127, 80, 0.8);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -82,24 +83,24 @@
 }
 
 .cart-btn:hover {
-  background-color: #ff5733; /* More vibrant coral on hover */
+  background-color: #ff5733;
 }
 
 /* Search Dropdown */
 .search-dropdown {
   position: absolute;
-  top: 65px; /* Align below the navbar */
-  left: 0;
-  width: 96.8%; /* Match the navbar width */
-  padding: 15px 30px; /* Same padding as navbar */
-  background-color: rgba(0, 0, 0, 0.85); /* Same background color as navbar */
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Consistent shadow */
-  z-index: 999; /* Above other elements */
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Centered and smaller width */
+  padding: 15px 30px;
+  background-color: rgba(0, 0, 0, 0.85); /* Same background color as the navbar */
+  border-radius: 0 0 0 0; /* Remove bottom radius for a connected look */
+  z-index: 101;
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.3s ease;
+  margin-bottom: 0; /* Remove extra space between search and results */
 }
 
 /* Search Input */
@@ -107,15 +108,15 @@
   flex: 1;
   padding: 10px;
   border: none;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0; /* Rounded corners only at the top */
   outline: none;
   font-size: 1rem;
-  color: #fff; /* White text to match navbar */
-  background-color: rgba(255, 255, 255, 0.1); /* Light background to contrast */
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .search-input::placeholder {
-  color: #ddd; /* Light gray placeholder */
+  color: #ddd;
 }
 
 /* Search Close Button */
@@ -129,7 +130,83 @@
 }
 
 .search-close:hover {
-  color: #ff7f50; /* Coral color on hover */
+  color: #ff7f50;
+}
+
+/* Search Results Container */
+.search-results {
+  position: absolute;
+  top: 65px; /* Align results directly below the search bar */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98.5%; /* Match width of search bar */
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.9); /* Darker background for results */
+  border-radius: 0 0 8px 8px; /* Rounded corners only at the bottom */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 101;
+  margin-top: 0px; /* Ensure there is no gap between the search bar and results */
+}
+
+/* Search Results List */
+.search-results ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual Search Result */
+.search-result-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #444; /* Darker separator */
+  transition: background-color 0.3s ease;
+}
+
+.search-result-item:hover {
+  background-color: rgba(255, 127, 80, 0.2); /* Semi-transparent coral on hover */
+}
+
+/* Search Result Link */
+.search-result-link {
+  display: flex;
+  width: 200%;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Search Result Image */
+.search-result-image img {
+  width: 60px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+/* Search Result Details */
+.search-result-details {
+  display: flex;
+  flex-direction: column;
+  white-space: normal; /* Allow full product names to be displayed */
+}
+
+.search-result-name {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.search-result-sku {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.search-result-description {
+  font-size: 0.85rem;
+  color: #bbb;
 }
 
 /* User Info (Username) */
@@ -138,17 +215,17 @@
   align-items: center;
   gap: 9px;
   font-size: 0.5rem;
-  color: #fff; /* White color to match the navbar */
+  color: #fff;
   font-weight: 500;
-  margin-left: 15px; /* Move "Welcome, user" slightly to the right */
+  margin-left: 15px;
 }
 
 .username {
   padding: 5px 10px;
-  background-color: rgba(255, 127, 80, 0.8); /* Semi-transparent coral */
+  background-color: rgba(255, 127, 80, 0.8);
   border-radius: 5px;
 }
 
 .username:hover {
-  background-color: #ff5733; /* Darker coral on hover */
+  background-color: #ff5733;
 }

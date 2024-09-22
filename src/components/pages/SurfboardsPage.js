@@ -30,7 +30,7 @@ const SurfboardsPage = () => {
 
   // Handle navigation to surfboard details page when a board is clicked
   const handleBoardClick = (surfboard) => {
-    navigate(`/surfboards/${surfboard._id}`, { state: { surfboard } });  // Navigate to the details page with surfboard state
+    navigate(`/surfboards/${surfboard.sku}`, { state: { surfboard } });  // Use sku for navigation
   };
 
   if (loading) return <p>Loading surfboards...</p>;
@@ -38,15 +38,15 @@ const SurfboardsPage = () => {
 
   return (
     <div className="surfboard-list">
-  {surfboards.map((surfboard) => (
-    <div key={surfboard._id} className="surfboard-card" onClick={() => handleBoardClick(surfboard)}>
-      <img src={surfboard.image} alt={surfboard.model} />
-      <h2>{surfboard.brand} - {surfboard.model}</h2>
-      <p>Length: {surfboard.length} ft</p>
-      <p className="price">Price: ${surfboard.price}</p>
+      {surfboards.map((surfboard) => (
+        <div key={surfboard.sku} className="surfboard-card" onClick={() => handleBoardClick(surfboard)}>
+          <img src={surfboard.image} alt={surfboard.model} />
+          <h2>{surfboard.brand} - {surfboard.model}</h2>
+          <p>Length: {surfboard.length} ft</p>
+          <p className="price">Price: ${surfboard.price}</p>
+        </div>
+      ))}
     </div>
-  ))}
-</div>
   );
 };
 

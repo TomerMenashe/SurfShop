@@ -28,6 +28,11 @@ const surfboardSchema = new mongoose.Schema({
     dateAdded: {
         type: Date,
         default: Date.now
+    },
+    sku: {
+        type: String,
+        required: true,
+        unique: true // Ensure that each SKU is unique
     }
 });
 

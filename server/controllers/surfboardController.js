@@ -10,26 +10,39 @@ const getAllSurfBoards = async (req, res) => {
     }
 };
 
-// Add a new surfboard
-const addSurfBoard = async (req, res) => {
-    const surfboard = new SurfBoard({
-        brand: req.body.brand,
-        model: req.body.model,
-        length: req.body.length,
-        price: req.body.price,
-        image: req.body.image,
-        description: req.body.description,
-    });
+// Get surfboard by SKU
+const getSurfBoardBySku = async (req, res) => {
+  try {
+    const surfboard = await SurfBoard.findOne({ sku: req.params.sku }); // Find by SKU
+    if (!surfboard) {
+      return res.status(404).json({ message: 'Surfboard not found' });
+    }
+    res.json(surfboard);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching surfboard', error: err });
+  }
+};
 
+
+// Search surfboards by name or description
+const searchSurfBoards = async (req, res) => {
+    const searchTerm = req.query.q;
     try {
-        const newSurfboard = await surfboard.save();
-        res.status(201).json(newSurfboard);
+        // Use regular expression to perform case-insensitive search on name and description
+        const surfboards = await SurfBoard.find({
+            $or: [
+                { model: { $regex: searchTerm, $options: 'i' } },   // Search by model (name)
+                { description: { $regex: searchTerm, $options: 'i' } } // Search by description
+            ]
+        });
+        res.json(surfboards);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
 };
 
 module.exports = {
     getAllSurfBoards,
-    addSurfBoard
+    getSurfBoardBySku, // Export the new controller function
+    searchSurfBoards,
 };
